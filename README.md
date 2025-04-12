@@ -73,7 +73,7 @@ function startAutoClick() {
     window.autoClickInterval = setInterval(() => {
         clickButton(currentIndex);
         currentIndex = (currentIndex + 1) % buttonTitles.length; // Lặp lại
-    }, 300); // 12 giây
+    }, 12000); // 12 giây
 }
 
 // Bắt đầu
