@@ -81,3 +81,9 @@ startAutoClick();
 
 // Để dừng, chạy trong console:
 // clearInterval(window.autoClickInterval);
+
+
+__________________________________________________________________________________________________________________________
+
+
+end.
