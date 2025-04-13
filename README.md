@@ -3,83 +3,83 @@ past in console:
 __________________________________________________________________________________________________________________________
 
 
-// Danh sách tiêu đề của các nút
+// List of button titles
 const buttonTitles = [
-    'Auto Collector',      // Nút 1
-    'Shard Multiplier',    // Nút 2
-    'Conveyor Booster'     // Nút 3
+    'Auto Collector',    // Button 1
+    'Shard Multiplier',  // Button 2
+    'Conveyor Booster'   // Button 3
 ];
 
-// Hàm mô phỏng chuỗi sự kiện click
+// Function to simulate a sequence of click events
 function simulateClick(element) {
     if (!element) return false;
-    
-    // Kiểm tra trạng thái nút
+
+    // Check if the button is disabled
     if (element.disabled || element.classList.contains('opacity-50')) {
-        console.log('Nút bị vô hiệu hóa!');
+        console.log('Button is disabled!');
         return false;
     }
-    
-    // Tạo các sự kiện
+
+    // Create the events
     const events = [
         new Event('mouseover', { bubbles: true }),
         new Event('mousedown', { bubbles: true }),
         new Event('mouseup', { bubbles: true }),
         new Event('click', { bubbles: true })
     ];
-    
-    // Kích hoạt từng sự kiện
+
+    // Dispatch each event
     events.forEach(event => element.dispatchEvent(event));
     return true;
 }
 
-// Hàm tìm và click nút
+// Function to find and click a button
 function clickButton(index) {
     const title = buttonTitles[index];
-    
-    // Tìm tất cả nút
+
+    // Find all buttons
     const buttons = document.querySelectorAll('button');
     let targetElement = null;
-    
-    // Duyệt để tìm nút đúng
+
+    // Loop to find the correct button
     buttons.forEach(button => {
         const h3 = button.querySelector('h3');
         if (h3 && h3.textContent === title) {
-            // Thử các vùng kích hoạt
+            // Try different clickable areas
             const flexDiv = button.querySelector('div.flex.items-start.gap-3');
             const flex1Div = button.querySelector('div.flex-1');
             
-            // Ưu tiên: flexDiv > flex1Div > button
+            // Priority: flexDiv > flex1Div > button
             targetElement = flexDiv || flex1Div || button;
         }
     });
-    
+
     if (targetElement) {
         const clicked = simulateClick(targetElement);
         if (clicked) {
-            console.log(`Đã click nút ${index + 1}: ${title} (vùng: ${targetElement.className})`);
+            console.log(`Clicked button ${index + 1}: ${title} (area: ${targetElement.className})`);
         } else {
-            console.log(`Không thể click nút ${index + 1}: ${title} (vùng bị vô hiệu hóa)`);
+            console.log(`Could not click button ${index + 1}: ${title} (area is disabled)`);
         }
     } else {
-        console.log(`Không tìm thấy nút ${index + 1}: ${title}`);
+        console.log(`Button ${index + 1} not found: ${title}`);
     }
 }
 
-// Hàm chạy vòng lặp click
+// Function to start the auto-click loop
 function startAutoClick() {
     let currentIndex = 0;
-    
+
     window.autoClickInterval = setInterval(() => {
         clickButton(currentIndex);
-        currentIndex = (currentIndex + 1) % buttonTitles.length; // Lặp lại
-    }, 12000); // 12 giây
+        currentIndex = (currentIndex + 1) % buttonTitles.length; // Loop through buttons
+    }, 3000); // 3 seconds
 }
 
-// Bắt đầu
+// Start auto-clicking
 startAutoClick();
 
-// Để dừng, chạy trong console:
+// To stop, run in the console:
 // clearInterval(window.autoClickInterval);
 
 
