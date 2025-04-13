@@ -122,7 +122,7 @@
                     localStorage.setItem('cycleCount', cycleCount);
                     console.log(`🔁 Chu kỳ ${cycleCount}/20`);
                 }
-                if (cycleCount >= 33) {
+                if (cycleCount >= 66) {
                     navigateTo('/refinery');
                     phase = 'refinery';
                     phaseStartTime = Date.now();
