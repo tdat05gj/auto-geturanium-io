@@ -1,3 +1,7 @@
+# **HƯỚNG DẪN**
+
+
+
 B1: Download Tampermonkey: https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo
 _________________________________________________________________________________________________________________
 B2: Mở Tampermonkey rồi ấn create a new script rồi dán code ở code.js vào rồi Ctrl để lưu lại
